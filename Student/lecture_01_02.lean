@@ -186,9 +186,22 @@ function types and answer the following questions.
 /-
 Questions:
 - Which two types are equivalent?
+Number 1 and Number 2 are equivalent. Both take a string argument, return a function
+that takes another strinmg argument and returns a string.
 - Are #1 and #3 equivalent?
+No. Number 1 does what I said before. Number 3 is a function that takes two string arguments
+and returns a single string.
 - Give English explanations of these function types
+1. Its a function that takes a string, returns another function that takes another string, returns a string. 
+2. Its a function that takes a string, also returns a functions that takes another string which returns a string. 
+3. Its a function that takes two string arguments and returns a single string. 
+(I said these up above but I rewrote to make it easier)
 - Give some examples of functions of these types
+1. I think for number 1 and 2 the easiest thing I could of is something that combines the strings.
+So you input the first string or part of your message like "Hello ", then it returns a function that asks for the second part like "World", 
+then it returns a string that has both of them combined into a single string, so "Hello World".
+2. I thought a cool function would be like a color mixer. The function asks for you to input two strings, like "red" and "blue"
+  and the function returns one string of the mixed color, so "purple".
 -/
 
 /-
