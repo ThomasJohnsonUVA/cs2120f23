@@ -219,6 +219,7 @@ def crazy (f : String → String) (a : String) : String := (f a)
 /-
 Question: What is the type of the crazy function? Be
 careful. 
+(String → String) → String → String
 -/
 
 /-
@@ -248,6 +249,7 @@ the return value.
 Self test: What does the following expression evaluate to?
 Answer before using Lean to compute it for you. Recall that
 f1 is a function as defined above and s2 is the string, "Lean!".
+Hello, Lean!
 -/
 #eval crazy2 f1 s2    
 
@@ -319,10 +321,10 @@ Self-test: Fill in the correct output values for this function.
 -/
 
 def nand : Bool -> Bool -> Bool
-| true, true => _
-| true, false => _
-| false, true => _
-| false, false => _
+| true, true => true
+| true, false => true
+| false, true => true
+| false, false => false
 
 /-
 Self-test: Complete this definition of the
@@ -332,13 +334,16 @@ each case.
 -/
 
 def nor : Bool -> Bool -> Bool
-:= _  -- delete this line and fill in the four cases
-
+| true, true => false
+| true, false => false
+| false, true => false
+| false, false => true
 /-
 Self-test. Suppose that a function takes two
 Boolean inputs and returns the "conjunction"
 (and) of the "negation" (not) of each argument.
 Which of the preceding results?
+its not and and so nand.
 -/
 
 def mystery : Bool -> Bool -> Bool
@@ -411,6 +416,14 @@ On the ambiguity of Natural language
 Consider a warning sign on escalator: "Shoes must be worn; 
 Dogs must be carried." How many different meanings could you
 possible attach to this command? Be creative. 
+1. You must always wear shoes and carry a dog.
+2. The dog must wear shoes and be carried. 
+3. If you are on the escalator, you must wear shoes and carry dog. 
+4. You could wear shoes on your hands or anyway and carry a dog.
+5. If you have a dog, you must carry them, and you must wear shoes. 
+6. You need shoes and a dog to ride the escalator.
+7. If you have a dog you must carry them and if you have shoes you must wear them, not hold them. 
+8. You cant carry shoes and you can't wear dogs. 
 
 Now consider what the words "and" and "or" could mean, in English.
 -- Example 1: they got married and they had a baby
@@ -448,4 +461,16 @@ Self test: Which mathematical function captures this, most
 plausible, interpretation of the snack policy that the Dad 
 was communicating to his daughter? (You can have either one
 or neither but not both)?
+Because you can have either one or the other, but not both or neither, it is  exclusive or or xor. 
+-/
+/-
+I used chatgpt to explain definitions of code in lean and operators. It was terrible at giving examples 
+that I could understand. For example, I asked it to give me examples of the functions at the beginning that input and output strings
+because I was sitting there and couldn't think of anything besides the examples you gave us in class. 
+It ended up giving me technical gobbledygook that made absolutely no sense. It was however helpful
+at doing things like explaining in english like what xand is. So I would say it definitly helped me bolster my understanding 
+and give me more information on certain things. So good at syntax, bascially just a quicker way to google,
+not very helpful at generating its own examples or responses besides ones you can just find online.
+I guess thats litterly all it does being a neural network and all. I'm assuming I wrote way too much but I find
+stuff like this interesting and it seems like you do too so I thought id try to give alittle more detail. 
 -/
