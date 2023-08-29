@@ -473,4 +473,6 @@ and give me more information on certain things. So good at syntax, bascially jus
 not very helpful at generating its own examples or responses besides ones you can just find online.
 I guess thats litterly all it does being a neural network and all. I'm assuming I wrote way too much but I find
 stuff like this interesting and it seems like you do too so I thought id try to give alittle more detail. 
+
+
 -/
