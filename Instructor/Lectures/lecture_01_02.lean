@@ -21,7 +21,7 @@ Every term in Lean has a type.
 
 #check true               -- "literal" term of type Bool
 #check false              -- another one
-#check (and true false)   -- a function application term
+#check (and true false)   -- a function appliation term
 #check (true && false)    -- using "infix" notation for "and"
 
 /-!
