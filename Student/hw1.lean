@@ -227,3 +227,12 @@ def square : Nat → Nat
 
 #eval glue_funs double square 5 -- 5^2*2=50
 #eval glue_funs square double 5 -- (5*2)^2=100
+
+/-
+I used chatgpt. It was not helpful trying to explain the logic of the functions and how to fix them.
+I had my g and f backwards and it couldn't figure it out and told me it was right. It thought I was typing it wrong or had
+some syntax error and it took me forever to see and it honestly would of probably been easier if I never asked chatgpt at all as it led me astray. Once
+again though it was good for syntax and explaining certain things like how the functions worked and pattern matching
+in greater detail. 
+
+-/
