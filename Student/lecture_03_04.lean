@@ -350,7 +350,8 @@ following test cases should work.
 -/
 
 -- Now you can and should write the code here:
-
+def apply2' : {α : Type} → (α → α) → α → α  
+| _, f, a => f (f a)
 
 -- same tests again
 #eval apply2' Nat.succ 0   -- expect 2
