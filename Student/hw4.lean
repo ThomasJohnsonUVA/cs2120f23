@@ -136,8 +136,10 @@ of definition.
 def sum_comm { α β : Type} : α ⊕ β → β ⊕ α :=
 fun s => 
   match s with
-  | _ => _
-  | _ => _
+  |  .inl a => .inr a
+  | .inr b => .inl b
+
+
 
 /-!
 Can you always convert a term of type *β ⊗ α* into 
@@ -146,6 +148,11 @@ that does it. Call is sum_comm_reverse.
 -/
 
 -- Here:
+def sum_comm_reverse { α β : Type} : β ⊕ α → α ⊕ β :=
+fun s => 
+  match s with
+  |  .inl b => .inr b
+  | .inr a => .inl a
 
 
 /-!
@@ -174,9 +181,9 @@ in both matching and to define return result values.
 -/
 
 def sum_assoc { α β γ : Type} : α ⊕ (β ⊕ γ) → (α ⊕ β) ⊕ γ
-| (Sum.inl a) => (Sum.inl _)
-| (Sum.inr (Sum.inl b)) => _
-| _ => _
+| (Sum.inl a) => (Sum.inl (Sum.inl a))
+| (Sum.inr (Sum.inl b)) => (Sum.inl (Sum.inr b))
+| (Sum.inr (Sum.inr c)) => (Sum.inr c)
 
 /-!
 Does this conversion also work in reverse? Prove it
@@ -186,7 +193,10 @@ a value of the first sum type as a result.
 -/
 
 -- Here:
-
+def sum_assoc_reverse { α β γ : Type} :(α ⊕ β) ⊕ γ  → α ⊕ (β ⊕ γ)
+| (Sum.inl (Sum.inl a)) => (Sum.inl a)
+| (Sum.inl (Sum.inr b)) => (Sum.inr (Sum.inl b))
+| (Sum.inr c) => (Sum.inr (Sum.inr c))
 /-!
 ## #6. Products Distribute Over Sums
 
@@ -202,9 +212,9 @@ either an *α* value and a *β* value, or an *α* value and
 a *γ* value. 
  -/
 
- def prod_dist_sum {α β γ : Type} : _
- | _ => _
- | _ => _
+ def prod_dist_sum {α β γ : Type} : α × (β ⊕ γ) → (α × β) ⊕ (α × γ)
+ | (a,Sum.inl b) => (Sum.inl (a,b))
+ | (a,Sum.inr c) => (Sum.inr (a,c))
 
 /-!
 Does the preceding principle work in reverse? In other 
@@ -217,7 +227,9 @@ any value of type *(α × β) ⊕ (α × γ)* into one of type
 -/
 
 -- Here:
- 
+ def prod_dist_sum_reverse {α β γ : Type} : (α × β) ⊕ (α × γ) → α × (β ⊕ γ)
+ | (Sum.inl (a,b)) => (a,Sum.inl b)
+ | (Sum.inr (a,c)) => (a,Sum.inr c)
 /-!
 In the forward (first) direction we can say that products
 distribute over sums, just as, say, *4 * (2 + 3)* is the
@@ -238,8 +250,10 @@ given values of those types as arguments, returns a value of
 type *wet*. 
 -/
 
--- Here
 
+def its_wet {rain sprinkler wet : Type} (rs:rain ⊕ sprinkler)  (rw: rain → wet) (sw: sprinkler → wet) : (rain ⊕ sprinkler) → wet
+  | Sum.inl rain => rw rain
+  | Sum.inr sprinkler => sw sprinkler
 /-!
 Now rewrite your function using the type names,
 *α, γ,* and *β* instead of *rain, sprinkler* and
@@ -247,6 +261,10 @@ Now rewrite your function using the type names,
 -/
 
 -- Here:
+
+def sum_elim {α γ β : Type} (rs:α ⊕ γ)  (rw: α → β) (sw: γ → β) : (α ⊕ γ) → β
+  | Sum.inl α => rw α
+  | Sum.inr γ => sw γ
 
 /-!
 You should now better understand how to program 
@@ -265,4 +283,15 @@ they correspond directly to fundamental principles
 of logical reasoning. The until now hidden purpose
 of this assignment has been to warm you up to this
 profound idea. 
+-/
+
+
+/-
+I used chatgpt for this assignment. Like usual, it was terrible at thinking for itself.
+I was struggling forever with number 4, I was super confused with the question. It couldn't give me a answer on how to solve
+it, but after going through lectures and playing around alot, 
+it was useful to help me better understand inl and inr and what that actually meant, which eventually helped me 
+solve the problem. Also helped me check my syntax on multiple occasions when I typed one letter wrong or didn't capitalize sum and couldn't
+figure out was wrong. So good for syntax and extra information, unable to solve any problems or even give a decent attempt at them, 
+which I guess is a good thing because it forced me to struggle and learn on my own. 
 -/
