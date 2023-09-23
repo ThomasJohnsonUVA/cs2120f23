@@ -95,11 +95,11 @@ that the function returns the correct answer when applied to
 -/
 
 def inner: Doll → Doll
-| _ => _
-| _ => _
+| solid => solid
+| (shell d')=> d'
 
 #reduce inner d3    -- expect (shell (shell solid))
-
+#reduce inner solid
 /-!
 You would be correct to call *inner* an elimination rule for the
 *Doll* type. If a function has to *use* a Doll given as an argument 
