@@ -267,7 +267,7 @@ def mul : Nat → Nat → Nat
 | m, 0 => 0
 | m, (Nat.succ n') => add (m) (mul m n')
 
--- A few test cases
+-- A few test cases m
 
 #eval mul 0 5 -- expect 5
 #eval mul 5 0 -- expect 5
@@ -291,7 +291,7 @@ to and including n.
 
 def sum_f : (Nat → Nat) → Nat → Nat 
 | f, 0 => f 0
-| f, n' + 1 => f (n' + 1) + sum_f f n' 
+| f, n' + 1 => f (n' + 1) + sum_f f n'  
 
 #eval sum_f (fun n => n) 10   -- expect 55
 #eval sum_f (fun n => n^2) 10 -- is 385 correct? 

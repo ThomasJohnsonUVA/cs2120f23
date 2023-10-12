@@ -708,7 +708,7 @@ else true
 
 -- Test cases
 
-def reduce_or : List Bool to Bool
+def reduce_or : List Bool → Bool
 | [] => false
 | h::t => or h (reduce_or t)
 

@@ -76,8 +76,8 @@ doing so makes the logical meaning clearer.
 def not_either_not_both { jam cheese } :
   ((no jam) ⊕ (no cheese)) → 
   (no (jam × cheese)) 
-| Sum.inl nojam => (fun _ => _)
-| Sum.inr _ => _
+| Sum.inl nojam => (fun (j,c) => nojam j)
+| Sum.inr nocheese => (fun (j,c) => nocheese c)
 
 /-!
 ### #2: Not One or Not the Other Implies Not Both
