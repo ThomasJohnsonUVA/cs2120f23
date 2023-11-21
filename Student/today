@@ -1,0 +1,4 @@
+
+inductive Chaos : Type
+
+def from_empty (e : Empty) : Chaos := nomatch e
