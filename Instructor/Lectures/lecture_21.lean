@@ -530,7 +530,7 @@ underlying membership proposition that you have to prove is
 satisfied by a given value.
 -/
 
-example : 3 ∈ even_or_small_set := Or.inr _
+example : 3 ∈ even_or_small_set := Or.inr (Or.inr (Or.inr (Or.inr (Or.inl rfl))))
 example : 6 ∈ even_or_small_set := _
 example : 7 ∉ ev_set ∪ small_set := _
 example : 7 ∈ ev_set := _   -- stuck
